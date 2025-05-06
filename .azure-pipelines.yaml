@@ -21,8 +21,12 @@ steps:
     terraform plan -out=tfplan
   displayName: 'Terraform Init & Plan'
 
-- task: ManualValidation@1
-  inputs:
-    instructions: 'Approve to apply Terraform plan'
-    onTimeout: 'reject'
-    timeout: '1h'
+- script: |
+    echo "Manual approval step simulated."
+    echo "Waiting 60 seconds as a placeholder..."
+    sleep 60
+  displayName: 'Simulate Manual Approval Step'
+
+# You can uncomment this for real apply
+# - script: terraform apply tfplan
+#   displayName: 'Terraform Apply'
